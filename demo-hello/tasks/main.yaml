@@ -1,0 +1,3 @@
+- include_tasks: hello-world.yaml
+- include_tasks: hello-variable.yaml
+- include_tasks: hello-crew.yaml

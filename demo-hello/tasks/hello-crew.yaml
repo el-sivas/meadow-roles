@@ -1,0 +1,4 @@
+- name: Hello with loop
+  debug:
+    msg: "Hello {{ item }}!"
+  loop: "{{ the_crew }}"

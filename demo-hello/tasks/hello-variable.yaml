@@ -1,0 +1,3 @@
+- name: Hello with a variable
+  debug:
+    msg: "Hello {{ hello_var }}!"
