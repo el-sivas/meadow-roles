@@ -1,0 +1,4 @@
+base_snap_packages:
+  - "hugo"
+base_snap_packages_classic:
+  - "skype"

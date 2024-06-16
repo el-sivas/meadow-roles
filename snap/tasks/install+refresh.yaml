@@ -1,0 +1,13 @@
+- name: install and refresh snap packages {{ base_snap_packages }}
+  ansible.builtin.snap:
+    name: "{{ item }}"
+    state: "present"
+    classic: "yes"
+  loop: "{{ base_snap_packages }}"
+
+- name: install and refresh additional snap packages {{ snap_packages | default([]) }}
+  ansible.builtin.snap:
+    name: "{{ item }}"
+    state: "present"
+    classic: "yes"
+  loop: "{{ snap_packages | default([]) }}"
