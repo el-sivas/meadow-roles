@@ -1,5 +1,9 @@
 - hosts: localhost
   gather_facts: no
+
+  pre_tasks:
+    - include_vars: demo-vars.yaml
+
   roles: 
     - role: demo-hello
     - role: apt

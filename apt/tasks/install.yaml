@@ -1,10 +1,10 @@
-- name: install basic packages "{{ basic_apt_packages }}"
+- name: install basic apt packages "{{ basic_apt_packages }}"
   apt:
     update_cache: yes
     cache_valid_time: 3600
     name: "{{ basic_apt_packages }}"
     state: present
-- name: install additional packages "{{ apt_packages | default([])}}"
+- name: install apt packages "{{ apt_packages | default([])}}"
   apt:
     update_cache: yes
     cache_valid_time: 3600
