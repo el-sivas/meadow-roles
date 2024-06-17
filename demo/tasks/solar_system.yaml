@@ -1,0 +1,4 @@
+- name: our solar system
+  debug:
+    msg: "The diameter of {{ item.value.name }} is {{ item.value.diameter }} km."
+  loop: "{{ solar_system | dict2items }}"

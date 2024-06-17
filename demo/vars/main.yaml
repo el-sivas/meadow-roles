@@ -3,3 +3,13 @@ the_crew:
   - "Amstrong"
   - "Aldrin"
   - "Collins"
+solar_system:
+  earth:
+    name: "Earth"
+    diameter: 12742
+  mars:
+    name: "Mars"
+    diameter: 6779
+  jupiter:
+    name: "Jupiter"
+    diameter: 139822
