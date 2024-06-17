@@ -1,4 +1,4 @@
 - include_tasks: hello-world.yaml
 - include_tasks: hello-variable.yaml
 - include_tasks: hello-crew.yaml
-- include_tasks: solar_system.yaml
+- include_tasks: solar-system.yaml

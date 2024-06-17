@@ -1,8 +1,14 @@
 - hosts: localhost
   gather_facts: no
-
   pre_tasks:
     - include_vars: demo-vars.yaml
-
   roles: 
     - role: demo
+
+- hosts: localhost
+  gather_facts: n
+  pre_tasks:
+    - include_vars: demo-vars-ssh.yaml
+  roles:
+    - role: ssh
+

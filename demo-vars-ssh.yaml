@@ -1,0 +1,11 @@
+ssh_users:
+  chip:
+    name: "chip"
+    keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7"
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8"
+  chap:
+    name: "chap"
+    keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9"
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0"
