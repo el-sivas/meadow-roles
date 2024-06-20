@@ -1,0 +1,3 @@
+pycharm_community_parent: /opt
+pycharm_community_url: https://download.jetbrains.com/python/pycharm-community-{{ pycharm_community_version }}.tar.gz
+pycharm_community_local_file: pycharm-community-{{ pycharm_community_version }}.tar.gz

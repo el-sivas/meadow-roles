@@ -1,0 +1,21 @@
+- name: set name pycharm target directory
+  set_fact:
+    pycharm_community_target: "{{ pycharm_community_parent }}/pycharm-community"
+
+- name: delete pycharm target directory {{ pycharm_community_target }}
+  ansible.builtin.file:
+    path: "{{ pycharm_community_target }}"
+    state: absent
+
+- name: create pycharm target directory {{ pycharm_community_target }}
+  ansible.builtin.file:
+    path: "{{ pycharm_community_target }}"
+    state: directory
+
+- name: unarchive PyCharm
+  ansible.builtin.unarchive:
+    src: "{{ pycharm_community_parent }}/{{ pycharm_community_local_file }}"
+    dest: "{{ pycharm_community_target }}"
+    remote_src: yes
+    creates: "{{ pycharm_community_parent }}/pycharm-community-{{ pycharm_community_version }}"
+    extra_opts: "--strip-components=1"
