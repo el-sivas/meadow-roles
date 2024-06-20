@@ -1,0 +1,24 @@
+- name: "Download Adoption Temurin 17 from {{ temurin_jdk_17_url }} to {{ temurin_17_parent }}/{{ temurin_17_local_file }}"
+  ansible.builtin.get_url:
+    url: "{{ temurin_jdk_17_url }}"
+    dest: "{{ temurin_17_parent }}/{{ temurin_17_local_file }}"
+
+- set_fact:
+    openjdk_17_target: "{{ temurin_17_parent }}/openjdk-17"
+
+- name: delete OpenJDK-17 target directory {{ openjdk_17_target }}
+  ansible.builtin.file:
+    path: "{{ openjdk_17_target }}"
+    state: absent
+
+- name: create OpenJDK-17 target directory {{ openjdk_17_target }}
+  ansible.builtin.file:
+    path: "{{ openjdk_17_target }}"
+    state: directory
+
+- name: unarchive OpenJDK-17
+  ansible.builtin.unarchive:
+    src: "{{ temurin_17_parent }}/{{ temurin_17_local_file }}"
+    dest: "{{ openjdk_17_target }}"
+    remote_src: yes
+    extra_opts: "--strip-components=1"
