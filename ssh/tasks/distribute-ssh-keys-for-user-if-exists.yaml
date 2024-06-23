@@ -1,0 +1,19 @@
+- name: debug username and ssh_keys
+  debug:
+    msg: "User {{ username }} has keys {{ ssh_keys }}"
+
+# the following stuff ist not working correclty
+- name: Check if user exists
+  getent:
+    database: passwd
+    key: "{{ username }}"
+  register: user_info
+  ignore_errors: yes
+
+- name: Set fact if user exists
+  set_fact:
+    user_exists: "{{ user_info is defined and user_info.ansible_facts.get('getent_passwd') is defined }}"
+
+- name: demo user_exists
+  debug:
+    msg: "User {{ username }} exists: {{ user_exists }}"
