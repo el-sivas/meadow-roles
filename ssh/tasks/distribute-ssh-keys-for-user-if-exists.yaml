@@ -1,4 +1,5 @@
-- name: "check if user exists {{ username }}"
+# first check if user is present
+- name: fetch user info for '{{ username }}''
   ansible.builtin.user:
     name: "{{ username }}"
   check_mode: true
@@ -6,17 +7,17 @@
 
 - name: extract state from user_info
   set_fact:
-    user_exists: "{{ user_info.state == 'present' }}"
+    user_is_present: "{{ user_info.state == 'present' }}"
   when: user_info.state is defined
 
-- name: set user_exists to false if user_info.state is not defined
+- name: set user_is_present to false if user_info.state is not defined
   set_fact:
-    user_exists: false
+    user_is_present: false
   when: user_info.state is not defined
 
-- name: debug user_exists
+- name: debug user_is_present
   debug:
-    msg: "User {{ username }} exists: {{ user_exists }}"
+    msg: "User {{ username }} is present: {{ user_is_present }}"
 
 
 ## finally debug ssh_keys and deploy them
@@ -24,11 +25,11 @@
 - name: debug username and ssh_keys
   debug:
     msg: "User {{ username }} has keys {{ ssh_keys }}"
-  when: user_exists
+  when: user_is_present
 
-- name: deploy ssh keys for user '{{ username }}''
+- name: deploy ssh keys for user '{{ username }}'
   ansible.posix.authorized_key:
     user: "{{ username }}"
     state: present
     key: "{{ ssh_keys | join('\n')}}"
-  when: user_exists
+  when: user_is_present
