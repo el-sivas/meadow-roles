@@ -10,6 +10,7 @@
     user_is_present: "{{ user_info.state == 'present' }}"
   when: user_info.state is defined
 
+# TODO: check if this can be done in a single task instead this fallback
 - name: set user_is_present to false if user_info.state is not defined
   set_fact:
     user_is_present: false
