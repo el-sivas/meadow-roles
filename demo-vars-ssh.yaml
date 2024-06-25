@@ -3,11 +3,11 @@ ssh_users:
     ssh_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7"
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8"
-  chap:
-    ssh_keys:
-      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9"
-      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0"
   dev4713:
     ssh_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1"
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2"
+  chap:
+    ssh_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9"
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0"

@@ -1,19 +1,34 @@
+- name: "check if user exists {{ username }}"
+  ansible.builtin.user:
+    name: "{{ username }}"
+  check_mode: true
+  register: user_info
+
+- name: extract state from user_info
+  set_fact:
+    user_exists: "{{ user_info.state == 'present' }}"
+  when: user_info.state is defined
+
+- name: set user_exists to false if user_info.state is not defined
+  set_fact:
+    user_exists: false
+  when: user_info.state is not defined
+
+- name: debug user_exists
+  debug:
+    msg: "User {{ username }} exists: {{ user_exists }}"
+
+
+## finally debug ssh_keys and deploy them
+
 - name: debug username and ssh_keys
   debug:
     msg: "User {{ username }} has keys {{ ssh_keys }}"
+  when: user_exists
 
-# the following stuff ist not working correclty
-- name: Check if user exists
-  getent:
-    database: passwd
-    key: "{{ username }}"
-  register: user_info
-  ignore_errors: yes
-
-- name: Set fact if user exists
-  set_fact:
-    user_exists: "{{ user_info is defined and user_info.ansible_facts.get('getent_passwd') is defined }}"
-
-- name: demo user_exists
-  debug:
-    msg: "User {{ username }} exists: {{ user_exists }}"
+- name: deploy ssh keys for user '{{ username }}''
+  ansible.posix.authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ ssh_keys | join('\n')}}"
+  when: user_exists
