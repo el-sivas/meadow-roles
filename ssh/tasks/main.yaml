@@ -1,1 +1,1 @@
-- include_tasks: distribute-ssh-keys.yaml
+- include_tasks: deprecated-fails.yaml

@@ -1,5 +1,8 @@
 = Release Notes
 
+== Verision 7
+Role 'ssh' deprecates message.
+
 == Version 6
 Added JDK-21 installation
 
