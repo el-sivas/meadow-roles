@@ -33,4 +33,5 @@
     user: "{{ username }}"
     state: present
     key: "{{ ssh_keys | join('\n')}}"
+    exclusive: true
   when: user_is_present
