@@ -1,6 +1,7 @@
 = Release Notes
 
 == Version 3
+Introduce role 'ssh_v2' using separate ssh-keys-files for each user.
 
 == Version 2
 Initial developments
