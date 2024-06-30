@@ -1,5 +1,14 @@
 = Release Notes
 
+== Version 6
+Added JDK-21 installation
+
+== Version 5
+Added JDK-17 installation
+
+== Version 4
+Fix for ssh keys deployment
+
 == Version 3
 Introduce role 'ssh_v2' using separate ssh-keys-files for each user.
 
