@@ -23,7 +23,7 @@
 
 ## finally debug ssh_keys and deploy them
 
-- name: debug username and ssh_keys
+- name: debug username and ssh_keys '{{ username }}''
   debug:
     msg: "User {{ username }} has keys {{ ssh_keys }}"
   when: user_is_present
