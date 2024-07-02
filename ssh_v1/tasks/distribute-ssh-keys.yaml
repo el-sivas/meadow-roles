@@ -1,0 +1,22 @@
+#- name: debug ssh users
+#  debug:
+#    msg: "User {{ item.key }} has keys {{ item.value.ssh_keys }}"
+#  loop: "{{ ssh_users | dict2items }}"
+
+#- name: deploy ssh keys
+#  ansible.posix.authorized_key:
+#    user: "{{ item.key }}"
+#    state: present
+#    key: "{{ item.value.ssh_keys | join('\n')}}"
+#  loop: "{{ ssh_users | dict2items }}"
+
+- name: deply ssh keys calling 'distribute-ssh-keys-for-user-if-exists.yaml' setting vars 'username' and 'ssh_keys'
+  include_tasks: distribute-ssh-keys-for-user-if-exists.yaml
+  loop: "{{ ssh_users | dict2items }}"
+  loop_control:
+    loop_var: user
+  vars:
+    username: "{{ user.key }}"
+    ssh_keys: "{{ user.value.ssh_keys }}"
+
+

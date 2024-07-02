@@ -1,0 +1,5 @@
+- name: uninstall apt packages "{{ apt_packages_to_remove | default([])}}"
+  apt:
+    name: "{{ apt_packages_to_remove | default([]) }}"
+    state: absent
+    autoremove: yes

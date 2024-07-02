@@ -1,0 +1,2 @@
+temurin_17_parent: /opt
+temurin_17_local_file: adoptium-temurin-{{ temurin_jdk_17_version }}.tar.gz

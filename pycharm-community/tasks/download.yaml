@@ -1,0 +1,4 @@
+- name: "Download PyCharm from {{ pycharm_community_url }} to {{ pycharm_community_parent }}/{{ pycharm_community_local_file }}"
+  ansible.builtin.get_url:
+    url: "{{ pycharm_community_url }}"
+    dest: "{{ pycharm_community_parent }}/{{ pycharm_community_local_file }}"
