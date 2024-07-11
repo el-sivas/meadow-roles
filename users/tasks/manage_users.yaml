@@ -1,0 +1,6 @@
+- name: manage users
+  user:
+    name: "{{ item.key }}"
+    uid: "{{ item.value.uid }}"
+    state: "{{ item.value.state | default('present') }}"
+  loop: "{{ users | dict2items }}"
