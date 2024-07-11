@@ -1,9 +1,16 @@
 ssh_users:
   chip:
-    ssh-keys:
+    ssh_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7"
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8"
+    ssh_keys_file: demo-ssh-keys/chip.pub
+  dev4713:
+    ssh_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1"
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC2"
+    ssh_keys_file: demo-ssh-keys/dev4713.pub
   chap:
-    ssh-keys:
+    ssh_keys:
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9"
       - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0"
+    ssh_keys_file: demo-ssh-keys/chap.pub

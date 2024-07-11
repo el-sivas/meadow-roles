@@ -1,0 +1,7 @@
+- name: print deprecation warning, and fail
+  fail:
+    msg: "This task is deprecated, please use ssh_v1"
+
+
+
+

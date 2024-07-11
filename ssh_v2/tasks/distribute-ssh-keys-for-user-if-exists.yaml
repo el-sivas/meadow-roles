@@ -1,0 +1,37 @@
+# first check if user is present
+- name: fetch user info for '{{ username }}''
+  ansible.builtin.user:
+    name: "{{ username }}"
+  check_mode: true
+  register: user_info
+
+- name: extract state from user_info
+  set_fact:
+    user_is_present: "{{ user_info.state == 'present' }}"
+  when: user_info.state is defined
+
+# TODO: check if this can be done in a single task instead this fallback
+- name: set user_is_present to false if user_info.state is not defined
+  set_fact:
+    user_is_present: false
+  when: user_info.state is not defined
+
+- name: debug user_is_present
+  debug:
+    msg: "User {{ username }} is present: {{ user_is_present }}"
+
+
+## finally debug ssh_keys and deploy them
+
+- name: debug username and ssh_keys '{{ username }}''
+  debug:
+    msg: "User {{ username }} has keys {{ ssh_keys }}"
+  when: user_is_present
+
+- name: deploy ssh keys for user '{{ username }}'
+  ansible.posix.authorized_key:
+    user: "{{ username }}"
+    state: present
+    key: "{{ ssh_keys | join('\n')}}"
+    exclusive: true
+  when: user_is_present
