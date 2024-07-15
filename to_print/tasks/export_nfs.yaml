@@ -1,0 +1,16 @@
+- name: Install NFS Server.
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: Ensure required entries are made to hosts file. # Notes 1232
+  lineinfile:
+    path: /etc/exports
+    state: present
+    line: "/var/tmp/to_print  *(rw,no_root_squash,no_subtree_check,insecure)"
+
+- name: Restart nfs-kernel-server.service 
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    state: started
+    name: nfs-kernel-server.service
