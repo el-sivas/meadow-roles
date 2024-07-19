@@ -1,0 +1,18 @@
+- name: crontab entry to create /tmp/to_print at reboot
+  cron:
+    name: create_to_print_dir
+    job: "mkdir -p /tmp/to_print && chmod 777 /tmp/to_print" 
+    user: root
+    state: present
+    special_time: reboot
+- name: crontab entry to create /tmp/printed at reboot
+  cron:
+    name: create_printed_dir
+    job: "mkdir -p /tmp/printed && chmod 777 /tmp/printed"
+    user: root
+    state: present
+    special_time: reboot
+- name: print pdf files in /tmp/to_print every minute; move them to /tmp/printed if successful
+  cron:
+    name: print_pdf_files
+    job: "for file in /tmp/to_print/*.pdf; do lp -d Kyocera_FS-1030D $file && mv $file /tmp/printed"

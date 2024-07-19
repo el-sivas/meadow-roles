@@ -7,7 +7,7 @@
   lineinfile:
     path: /etc/exports
     state: present
-    line: "/var/tmp/to_print  *(rw,no_root_squash,no_subtree_check,insecure)"
+    line: "/tmp/to_print  *(rw,no_root_squash,no_subtree_check,insecure)"
 
 - name: Restart nfs-kernel-server.service 
   ansible.builtin.systemd:
