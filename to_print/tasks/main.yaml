@@ -1,1 +1,2 @@
 - include: create_dirs.yaml
+- include: setup_script.yaml

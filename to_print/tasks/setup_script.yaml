@@ -1,0 +1,12 @@
+- name: create dir /root/bin
+  file:
+    path: /root/bin
+    state: directory
+    mode: 0755
+
+- name: install script
+  copy:
+    src: ../src/to_print.sh
+    dest: /root/bin/to_print.sh
+    mode: 0755
+
