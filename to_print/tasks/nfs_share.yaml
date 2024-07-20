@@ -1,0 +1,19 @@
+- name: install nfs-kernel-server
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: add nfs share /var/tmp/to_print to /etc/exports
+  ansible.builtin.lineinfile:
+    path: /etc/exports
+    line: '/var/tmp/to_print *(rw,sync,no_subtree_check)'
+    state: present
+
+- name: exportfs -ra
+  command: exportfs -ra
+
+- name: start nfs-kernel-server
+  service:
+    name: nfs-kernel-server
+    state: started
+    enabled: yes

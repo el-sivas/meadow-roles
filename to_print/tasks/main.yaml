@@ -1,3 +1,4 @@
 - include: create_dirs.yaml
 - include: setup_script.yaml
 - include: setup_crontab.yaml
+- include: nfs_share.yaml
