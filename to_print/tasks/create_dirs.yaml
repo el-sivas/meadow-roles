@@ -1,0 +1,10 @@
+- name: create /var/tmp/to_print
+  file:
+    path: /var/tmp/to_print
+    state: directory
+    mode: 0777
+
+- name: create /var/tmp/printed
+  file:
+    path: /var/tmp/printed
+    state: directory
