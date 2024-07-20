@@ -10,8 +10,9 @@ function log_info() {
     echo "$(date) [INFO] $1"
 }
 
-function log_error() {
+function error() {
     echo "$(date) [ERROR] $1" >&2
+    exit 1
 }
 
 if [ -z "$(find "$to_print_dir" -name '*.pdf')" ]; then
@@ -20,11 +21,11 @@ if [ -z "$(find "$to_print_dir" -name '*.pdf')" ]; then
 fi
 
 for file in "$to_print_dir"/*.pdf; do
-    log_info -n "print '$file'..."
+    log_info "print '$file'..."
     if ! lp -d "$printer" "$file"
     then
         mv "$file" "$print_fails_dir"
-        log_error "print '$file' failed, moved to '$print_fails_dir"
+        error "print '$file' failed, moved to '$print_fails_dir"
     else
         mv "$file" "$printed_dir"
         log_info "..OK"
