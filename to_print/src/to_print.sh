@@ -3,7 +3,6 @@
 printer="Kyocera_FS-1030D"
 
 to_print_dir=/var/tmp/to_print
-printed_dir=/var/tmp/printed
 print_fails_dir=/var/tmp/print_fails
 
 function log_info() {
@@ -27,7 +26,7 @@ for file in "$to_print_dir"/*.pdf; do
         mv "$file" "$print_fails_dir"
         error "print '$file' failed, moved to '$print_fails_dir"
     else
-        mv "$file" "$printed_dir"
-        log_info "..OK"
+        rm "$file"
+        log_info "..OK. '$file' removed"
     fi
 done

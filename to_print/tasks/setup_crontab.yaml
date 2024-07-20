@@ -1,6 +1,13 @@
 - name: run script /root/bin/to_print.sh minutely
   cron:
     name: run script /root/bin/to_print.sh minutely
-    minute: "*"
+    minute: "*/5"
     job: /root/bin/to_print.sh >> /var/log/to_print.log 2>> /var/log/to_print.err
     state: present
+
+- name: run script /root/bin/to_print.sh minutely
+  cron:
+    name: run script /root/bin/to_print.sh minutely
+    minute: "*"
+    job: /root/bin/to_print.sh >> /var/log/to_print.log 2>> /var/log/to_print.err
+    state: absent
