@@ -1,0 +1,19 @@
+- name: docker-compose up all services
+  debug:
+    msg: "docker-compose up -d"
+
+- name: bring up all services
+  docker_compose:
+    project_src: "{{ project_src }}"
+    state: present
+#    project_name: "{{ project_name }}"
+#    build: yes
+#    recreate: yes
+#    pull: yes
+#    detach: yes
+#    remove_orphans: yes
+#    remove_images: all
+#    remove_volumes: yes
+#    remove_networks: yes
+#    remove_containers: yes
+#    timeout: 300
