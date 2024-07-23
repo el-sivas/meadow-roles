@@ -1,0 +1,3 @@
+= dockercompose
+
+Name without '-' to not have any name clash with command 'docker-compose'

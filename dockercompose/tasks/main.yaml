@@ -1,0 +1,4 @@
+- include: compose-up.yaml
+- name: all done
+  debug:
+    msg: "All done!"
