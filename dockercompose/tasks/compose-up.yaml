@@ -4,5 +4,6 @@
 
 - name: bring up all services
   docker_compose:
-    project_src: "{{ project_src }}"
+    project_src: "services/{{ item }}"
     state: present
+  loop: "{{ projects_dirs }}"
