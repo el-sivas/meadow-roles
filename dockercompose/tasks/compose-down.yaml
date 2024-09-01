@@ -1,0 +1,5 @@
+- name: bring down all services absent
+  docker_compose:
+    project_src: "services/{{ item }}"
+    state: absent
+  loop: "{{ projects_absent | default([]) }}"
