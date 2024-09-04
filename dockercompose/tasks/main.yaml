@@ -1,5 +1,5 @@
-- include_task: compose-up.yaml
-- include_task: compose-down.yaml
+- include_tasks: compose-up.yaml
+- include_tasks: compose-down.yaml
 - name: all done
   debug:
     msg: "All done!"
