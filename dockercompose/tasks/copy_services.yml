@@ -1,9 +1,3 @@
-- name: Ensure remote services directory exists
-  file:
-    path: "{{ remote_services_path }}"
-    state: directory
-    mode: '0755'
-
 - name: Copy services folder to remote host
   synchronize:
     src: "{{ local_services_path }}/"
@@ -11,4 +5,10 @@
     delete: yes
     recursive: yes
   delegate_to: localhost
+
+- name: Ensure privacy of remote services directory
+  file:
+    path: "{{ remote_services_path }}"
+    state: directory
+    mode: '0700'
 

@@ -1,0 +1,4 @@
+- name: Delete the directory
+  file:
+    path: "{{ remote_services_path }}"
+    state: absent
