@@ -1,3 +1,4 @@
 basic_apt_packages:
   - curl
   - htop
+  - rsync
