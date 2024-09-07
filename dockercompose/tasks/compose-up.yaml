@@ -1,9 +1,5 @@
-- name: docker-compose up all services
-  debug:
-    msg: "docker-compose up -d"
-
 - name: bring up all services
   docker_compose:
-    project_src: "services/{{ item }}"
+    project_src: "{{ remote_services_path }}/{{ item }}"
     state: present
   loop: "{{ projects_dirs }}"

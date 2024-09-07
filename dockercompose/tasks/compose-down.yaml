@@ -1,5 +1,5 @@
 - name: bring down all services absent
   docker_compose:
-    project_src: "services/{{ item }}"
+    project_src: "{{ remote_services_path }}/{{ item }}"
     state: absent
   loop: "{{ projects_absent | default([]) }}"
