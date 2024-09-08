@@ -11,5 +11,6 @@
     path: "{{ remote_services_path }}"
     state: directory
     mode: '0700'
-    recurse: yes
+# dont use 'recurse' some of the processes in the container may not have the right permissions
+#    recurse: yes
 
