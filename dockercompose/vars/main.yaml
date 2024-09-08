@@ -1,2 +1,2 @@
 local_services_path: "{{ playbook_dir }}/{{ services_path }}"
-remote_services_path: "/tmp/services-by-ansible"
+remote_services_path: "~/services-by-ansible"
