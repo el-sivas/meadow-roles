@@ -1,0 +1,4 @@
+- name: Schedule shutdown in {{ shutdown_time_in_minutes }} minute(s)
+  ansible.builtin.command: /sbin/shutdown -h +{{ shutdown_time_in_minutes }} 
+  async: 0
+  poll: 0
