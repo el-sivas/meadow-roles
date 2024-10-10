@@ -5,6 +5,7 @@
     delete: yes
     recursive: yes
   delegate_to: localhost
+  remote_user: "root"
 
 - name: Ensure privacy of remote services directory
   file:

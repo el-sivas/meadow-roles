@@ -1,3 +1,8 @@
+- name: debug all remote services paths
+  debug:
+    msg: "{{ remote_services_path }}/{{ item }}"
+  loop: "{{ projects_dirs }}"
+
 - name: bring up all services
   docker_compose:
     project_src: "{{ remote_services_path }}/{{ item }}"

@@ -1,7 +1,7 @@
 ---
+- include_tasks: compose-down.yaml
 - include_tasks: copy_services.yml
 - include_tasks: compose-up.yaml
-- include_tasks: compose-down.yaml
 
 ## dont remove services on remote, to ensure that the services keeping run ability
 #- include_tasks: rm_services_on_remote.yaml
