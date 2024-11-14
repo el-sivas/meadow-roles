@@ -1,0 +1,3 @@
+- name: Manage NFS mounts
+  include_tasks: mount_nfs.yml
+  loop: "{{ nfs_mounts }}"
