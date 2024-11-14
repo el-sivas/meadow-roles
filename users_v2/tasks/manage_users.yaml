@@ -1,0 +1,20 @@
+- name: manage users
+  user:
+    name: "{{ item.username }}"
+    uid: "{{ item.uid }}"
+    system: "{{ item.system | default(false) }}"
+    shell: "{{ '/sbin/nologin' if item.removed | default(false) else item.shell | default(omit) }}"
+    password_lock: "{{ item.removed | default(false) }}"
+    state: "{{ 'present' if item.username in users_present else 'absent' }}"
+    #shell: "{{ item.shell | default(omit) }}"    
+  loop: "{{ users }}"
+
+- name: Set home directory permissions
+  file:
+    path: "/home/{{ item.username }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: '0700'
+  loop: "{{ users }}"
+  when: 
+    - item.username in users_present
