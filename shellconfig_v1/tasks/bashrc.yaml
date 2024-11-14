@@ -1,0 +1,7 @@
+- name: "write bashrc for users listed in variable 'shellconfig_user_homes'"
+  template:
+    src: bashrc
+    dest: "{{ item }}/.bashrc"
+  loop: "{{ shellconfig_user_homes }} "
+  when: shellconfig_user_homes is defined
+  
