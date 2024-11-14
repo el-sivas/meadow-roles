@@ -1,0 +1,10 @@
+- name: Erstelle Verzeichnisse für definierte Benutzer
+  ansible.builtin.file:
+    path: "{{ item[0].location }}/{{ item[1] }}"
+    state: directory
+    owner: "{{ item[1] }}"
+    group: "{{ item[1] }}"
+    mode: '0700'
+  with_nested:
+    - "{{ dirs_for_all_users }}"
+    - "{{ users_present }}"
