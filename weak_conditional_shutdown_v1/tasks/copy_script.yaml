@@ -4,7 +4,7 @@
     state: directory
     mode: '0755'
 
-- name: copy script to ~/bin
+- name: copy script to ~/weak_conditional_shutdown_v1
   copy:
     src: "weak_conditional_shutdown_v1.sh"
     dest: "{{ ansible_env.HOME }}/weak_conditional_shutdown_v1/weak_conditional_shutdown_v1.sh"
