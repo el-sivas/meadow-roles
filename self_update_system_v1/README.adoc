@@ -1,0 +1,6 @@
+= self update system 
+Version 1
+
+Diese Rolle legt einen einfachen cronjob an der 1x die Woche `apt-get update && apt-get upgrade -y` durchführt. Um das zuverlässig hinzubekommen sollte das System 24/7 laufen.
+
+Sollte das z.B. auf einem Desktop-System verwendet werden so muss der Job anders gescheduled werden, z.B. auf `@reboot`
