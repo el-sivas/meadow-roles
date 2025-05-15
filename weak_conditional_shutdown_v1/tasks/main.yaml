@@ -1,0 +1,2 @@
+- include_tasks: copy_script.yaml
+- include_tasks: create_cronjob.yaml

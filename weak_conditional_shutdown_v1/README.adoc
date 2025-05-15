@@ -1,0 +1,11 @@
+= weak conditional shutdown
+Version 1
+
+Diese Rolle erzeugt ein Script und einen Cronjob, der folgede Aktionen erfolgreich durchführt. Sollte eine fehltschlagen initiert er einen Shutdown des Systems. Die Konditionen bauen aufeinander auf.
+
+1. Ping des hosts `cluster-conditional-shutdown-preventer`
+2. Herunterladen des contents von `http://cluster-conditional-shutdown-preventer:5556`
+3. Prüfen, ob die Datei lokal verfügbar ist.
+4. Prüfen ob der Dateiinhalt `do not shutdown` ist.
+
+"Weak" ist diese Rolle deshalb weil der Shutdown innerhalb des Scripts initiert wird, d.h. sollte es beim Nichteinhaltn einen Kondition und vor dem initieren des Shutdowns zu einem Fehler kommen so wird der Shutdown unbeabsichtigterweise nicht durchgeführt.

@@ -1,0 +1,6 @@
+- name: create cronjob that runs script every 5 minutes
+  cron:
+    name: "weak_conditional_shutdown_v1"
+    minute: "*/10"
+    job: "{{ ansible_env.HOME }}/bin/weak_conditional_shutdown_v1.sh > /tmp/weak_conditional_shutdown_v1.log 2>&1" 
+    state: present
