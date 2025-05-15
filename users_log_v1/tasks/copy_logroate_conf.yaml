@@ -1,0 +1,5 @@
+- name: copy logrotate configuration to ~
+  copy:
+    src: "logrotate.conf"
+    dest: "{{ ansible_env.HOME }}/.users_log_v1__logrotate.conf"
+    mode: '0644'

@@ -1,0 +1,3 @@
+- include_tasks: create_log_dir.yaml
+- include_tasks: copy_logroate_conf.yaml
+- include_tasks: create_cronjob.yaml

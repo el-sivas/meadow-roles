@@ -1,0 +1,6 @@
+- name: create a cronjob that runs on startup
+  cron:
+    name: "users_log_v1"
+    special_time: reboot
+    job: "/usr/sbin/logrotate -v -s $HOME/.logrotate.status $HOME/.users_log_v1__logrotate.conf >> $HOME/log/users_log_v1__logrotate.log"
+    state: present

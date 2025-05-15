@@ -1,0 +1,5 @@
+- name: create folder '~/log' if it does not exist
+  file:
+    path: "{{ ansible_env.HOME }}/log"
+    state: directory
+    mode: '0755'
