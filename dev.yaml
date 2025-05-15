@@ -3,3 +3,4 @@
   roles:
 #    - role: weak_conditional_shutdown_v1
 #    - role: self_update_system_v1
+    - role: users_log_v1
