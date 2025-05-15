@@ -4,4 +4,4 @@
     hour: "3"
     weekday: "0"
     job: "apt-get update && apt-get upgrade -y > /tmp/self_update_system_v1.log 2>&1" 
-    state: absent
+    state: present
