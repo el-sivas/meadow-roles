@@ -1,0 +1,6 @@
+= apt
+Version 3
+
+Diese Rolle ermöglicht es über die Listen-Variablen `apt_packages_to_install` und `apt_packages_to_remove` apt-Pakete zu installieren und zu deinstallieren. 
+
+Exemplarisch sind über die `vars` einige Pakete enthalten, diese können nach Bedarf überschrieben werden.
