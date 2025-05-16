@@ -1,0 +1,5 @@
+- name: create dir {{ observed_dir }}
+  file:
+    path: "{{ observed_dir }}"
+    state: directory
+    mode: '0755'

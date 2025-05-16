@@ -1,0 +1,3 @@
+- include_tasks: create_dirs.yaml
+- include_tasks: copy_script.yaml
+- include_tasks: copy_rc.yaml

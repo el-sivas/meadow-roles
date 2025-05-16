@@ -1,0 +1,5 @@
+- name: copy rc
+  copy:
+    src: "{{ runtime_config_source_file }}"
+    dest: "{{ ansible_env.HOME }}/.run-observed.rc"
+    mode: '0644'

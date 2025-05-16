@@ -1,0 +1,69 @@
+#!/bin/bash
+help_text="Usage: $0 <name> <command>
+
+example:
+$0 myjob 'ls /tmp'      # ok
+$0 myjob 'ls /invalid'  # fail - error type 1
+$0 myjob 'ls-invalid'   # fail - error type 2"
+
+run_content="{
+    \"command\": \"COMMAND\",
+    \"rc\": \"EXIT_CODE\",
+    \"start_time\": \"START_TIME\",
+    \"end_time\": \"END_TIME\"
+}"
+
+log_dir=.
+observe_dir=.
+
+function read_runtime_config {
+    if [ -f $HOME/.run-observed.rc ]; then
+        source $HOME/.run-observed.rc
+    else
+        echo "No runtime config file found at $HOME/.run-observed.rc, use default values:"
+        echo "log_dir=$log_dir"
+        echo "observe_dir=$observe_dir"
+    fi
+}
+
+function assert_preconditions {
+    if [ $# -lt 2 ]; then
+        echo "$help_text"
+        exit 1
+    fi
+}
+
+function run_observed {
+    {
+        start_time=$(date -Is)
+        echo "run-observed start ['$@']: $start_time"
+        eval $@
+        exit_code=$?
+        end_time=$(date -Is)
+        echo "run-observed end ['$@']: exit code: '$exit_code', $end_time "
+    } >> $log_dir/$name.log 2>&1
+
+    observe_file=$observe_dir/$name/$(date +%Y-%m-%d_%H-%M-%S).json
+    current_run_content=${run_content/EXIT_CODE/$exit_code}
+    current_run_content=${current_run_content/COMMAND/$@}
+    current_run_content=${current_run_content/START_TIME/$start_time}
+    current_run_content=${current_run_content/END_TIME/$end_time}
+    echo "$current_run_content" > $observe_file
+}
+
+function prepare {
+    if [ ! -d "$observe_dir"/"$name" ] ; then
+        mkdir -p "$observe_dir"/"$name"
+    fi
+}
+
+read_runtime_config
+assert_preconditions $@
+name=$1
+prepare $name
+shift
+run_observed $@
+
+
+
+

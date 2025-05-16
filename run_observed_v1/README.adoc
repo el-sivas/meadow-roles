@@ -1,0 +1,12 @@
+= run observed
+Version 1
+
+Dieses Rolle installiert systemweit ein Scipt `run-observed` welches cli-Kommandos überwachen und loggen kann.
+
+Es erfordert eine runtime config `~/.run-observed.rc` und schreibt die Ergebnisse jeweils weg.
+
+Wenn das Ganze als Root ausgeführt wird, dann kann als `log_dir` `/var/log` verwendet werden. Ansonsten besser `~/log`.
+
+Als `observe_dir` bietet sich ein Verzeichnist unter `/var/tmp` an.
+
+Hinweis:: Die hier vorliegende Konfig ist für Root ausgelegt, da das `log_dir` `/var/log` ist und ein user nomalerweise hier keine Schreibrechte hat.

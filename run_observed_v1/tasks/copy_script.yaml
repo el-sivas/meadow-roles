@@ -1,0 +1,5 @@
+- name: copy script to /usr/local/bin/
+  copy:
+    src: "run-observed"
+    dest: "/usr/local/bin/run-observed"
+    mode: '0755'
