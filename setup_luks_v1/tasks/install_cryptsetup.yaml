@@ -1,0 +1,5 @@
+- name: install cyptsetp
+  ansible.builtin.apt:
+    name: cryptsetup
+    state: present
+    

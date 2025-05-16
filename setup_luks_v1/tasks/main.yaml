@@ -1,0 +1,2 @@
+- include_tasks: install_cryptsetup.yaml
+- include_tasks: run_modprobe.yaml
