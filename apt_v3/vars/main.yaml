@@ -1,0 +1,6 @@
+apt_packages:
+  - curl
+  - htop
+  - rsync
+  - fail2ban
+  - unzip
