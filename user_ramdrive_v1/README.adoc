@@ -1,0 +1,4 @@
+= user ramdrive
+Version 1
+
+Diese Rolle stellt auf dem System ein Script zur Verfügung, dass für den ausführenden Benutzer ein Ramdrive anlegt und aus seinem Homeverzeichnis heraus velinkt.

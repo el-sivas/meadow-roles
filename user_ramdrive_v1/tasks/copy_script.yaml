@@ -1,0 +1,5 @@
+- name: copy script to /usr/local/bin/
+  copy:
+    src: "ramdrive"
+    dest: "/usr/local/bin/ramdrive"
+    mode: '0755'

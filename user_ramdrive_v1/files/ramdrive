@@ -1,0 +1,23 @@
+#!/bin/bash
+help="""Usage: $0
+
+creates a user private ramdrive in /dev/shm/ and mounts it to ~/ramdrive.
+"""
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    echo "$help"
+    exit 0
+fi
+
+mountpoint=~/ramdrive
+
+function create_ramdrive_and_force_mount {
+    temp_dir=$(mktemp --directory /dev/shm/$USER.XXXXXX)
+    ln -sfv $temp_dir $mountpoint
+}
+
+if [ -L "$mountpoint" ] && [ -e "$mountpoint" ]; then
+    echo "ramdrive already mounted at $mountpoint"
+else
+    create_ramdrive_and_force_mount
+fi
